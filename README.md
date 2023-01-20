@@ -12,7 +12,8 @@
 
 <h3 align="center">:dart: Objetivo do Projeto :dart:</h3>
 
-<p>O presente projeto visa fornecer um meio digital que seja prático para leitura de PDF's para os usuários.</p>
+<p>O presente projeto visa fornecer um meio digital que seja prático para leitura de PDF's para os usuários.
+Por meio de pesquisa, o usuário procura o livro que gostaria de ler, e o site redireciona para aquele que foi solicitado.</p>
 
 <h3 align="center">:space_invader: O que foi Utilizado no Projeto :space_invader:</h3>
 <ul>
