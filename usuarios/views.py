@@ -31,7 +31,7 @@ def autenticar(request):            # ok
         return redirect('index')
         
     else:
-        return redirect('login')            # ajustar para fazer a mensagem de erro 
+        return redirect('/login?validacao=00')            # ajustar para fazer a mensagem de erro 
         
     
 def logout(request):            # ok

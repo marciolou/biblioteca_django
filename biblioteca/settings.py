@@ -115,6 +115,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, STATIC_URL)    # Estamos dizendo que o caminho absoluto para onde nossas Imagens, CSS e JavaScript serão armazenados é no diretório BASE_DIR / static Files (STATIC_ROOT)
 
+
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 MEDIA_URL = 'images/'           # Da um caminho relativo para onde ficam os arquivos que chegam em nossa aplicação por meio de um upload.
