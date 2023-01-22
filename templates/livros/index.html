@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    
+  </head>
+
+<body>
+    <a href="{% url 'logout' %}">Clique aqui para sair</a>
+
+
+    {% load static %}
+
+    <!-- <img src="{% static 'livros/img.jpg'%}"> -->
+
+    <h1>PÁGINA INICIAL BIBLIOTECA</h1>
+
+    <h3>{{ objeto }}</h3>
+    <h3>{% for objeto in objeto %}</h3>
+    {{ objeto.id }} {{ objeto.capa|safe }} <br>
+    <!-- |safe: Diz ao Django que todo o conteúdo que estiver aqui dentro, deve ser interpretado como HTML. -->
+
+    {% endfor %}
+</body>
+
+</html>
+
