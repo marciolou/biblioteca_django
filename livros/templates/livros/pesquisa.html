@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Pesquisa de Livros - Biblioteca Python</title>
+
+<style>
+body, html {
+  height: 100%;
+  font-family:monospace
+}
+
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("../static/livrosProgramacao.jpg");
+  background-color: aliceblue;
+  min-height: 75%;
+}
+
+.menu {
+  display: none;
+}
+
+.w3-text-white{
+  text-shadow: 0px 0px 15px black;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Links (sit on top) -->
+<div class="w3-top">
+  <div class="w3-row w3-padding w3-black">
+    <div class="w3-col s3">
+      <a href="#" class="w3-button w3-block w3-black">Bem vindo @FULANODETAL</a>
+    </div> 
+    <!-- SUBSTITUIR ACIMA COM CÓDIGO PYTHON! -->
+    <div class="w3-col s3">
+      <a href="#" class="w3-button w3-block w3-black">Sair</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header com a imagem da biblioteca -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+    <span class="w3-tag">A sua especialista em livros Python!</span>
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:90px">Biblioteca<br>Python</span>
+  </div>
+</header>
+
+<!-- Pesquisa dos livros ou autores -->
+<div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Pesquise o seu Livro ou Autor!</span></h5>
+  
+    <div class="w3-row w3-center w3-card w3-padding">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
+        <div class="w3-col s6 tablink">Por Nome de Livro</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
+        <div class="w3-col s6 tablink">Por Autor</div>
+      </a>
+    </div>
+
+    <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
+      <h5>Escreva o nome do livro</h5>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Livro" required name="Name"></p>
+      <p><button class="w3-button w3-black" type="submit">Procurar Livro!</button></p>
+    </div>
+
+    <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
+      <h5>Escreva o nome do Autor</h5>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Autor" required name="Name"></p>
+      <p><button class="w3-button w3-black" type="submit">Procurar Autor!</button></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Livros recém adicionados -->
+<div class="w3-container" id="where" style="padding-bottom:32px;">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Livros recém adicionados!</span></h5>
+    <!-- COLOCAR AQUI A PARTE DE JS QUE PUXA O QUE FOI ADICIONADO -->
+  </div>
+</div>
+
+<div class="w3-container" id="where" style="padding-bottom:32px;">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Não achou um livro? Nos informe abaixo! </span></h5>
+    <p>Estamos sempre buscando expandir o nosso banco de dados e incluir novidades para nossos usuários!</p>
+
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Nome do Livro" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="ISBN-13" required name="People"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="Autor" required name="People"></p>
+
+      <p><button class="w3-button w3-black" type="submit">Enviar mensagem!</button></p>
+    </form>
+  </div>
+</div>
+
+<!-- Sobre Nós -->
+<div class="w3-content" style="max-width:700px">
+  <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Sobre nós</span></h5>
+    <p>Há mais de 10 anos buscamos deixar disponíveis para todos os estudantes e interessados pela linguagem de programação Python livros de qualidade para auxiliar nos seus estudos e crescimento profissional</p>
+    <br>
+    <div class="w3-panel w3-leftbar w3-light-grey">
+      <p><i>"Meus primeiros passos na linguagem Python aconteceu há cerca de 8 anos, e o site com seus livros me ajudou muito nesse período, assim como me ajuda até hoje a me manter atualizado.</i></p>
+      <p>Antonio, usuário há 8 anos da Biblioteca Python</p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+  <p>Feito por LMM</a></p>
+</footer>
+
+<script>
+  // Aqui faz funcionar a troca entre livro x autor
+
+  function openMenu(evt, menuName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("menu");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+    }
+    document.getElementById(menuName).style.display = "block";
+    evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+  }
+  document.getElementById("myLink").click();
+  </script>
+
+</body>
+</html>
