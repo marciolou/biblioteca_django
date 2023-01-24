@@ -2,12 +2,9 @@ from django.shortcuts import render
 from . models import Leitor
 from django.shortcuts import redirect       # método de redirecionamento
 from hashlib import sha256                  # criptografia
-from django.http import HttpResponse
 
 
-# Create your views here.
-
-def login(request):         # ok porem o template não ficou como o esperado
+def login(request):
     
     validacao = request.GET.get('validacao')
     
@@ -15,34 +12,32 @@ def login(request):         # ok porem o template não ficou como o esperado
         'validacao': validacao
     }
     
-    return render(request, 'usuarios/login.html', confirme)
+    return render(request, 'login.html', confirme)
 
 
-def autenticar(request):            # ok
+def autenticar(request):
     
     email = request.POST.get('email')
     senha = sha256(request.POST.get('senha').encode()).hexdigest()
     
-    
     usuario = Leitor.objects.filter(email = email).filter(senha = senha)
     
     if len(usuario) != 0:
-        request.session['usuario'] = usuario[0].id   # ok
+        request.session['usuario'] = usuario[0].id
         return redirect('index')
         
     else:
-        return redirect('/login?validacao=00')            # ajustar para fazer a mensagem de erro 
+        return redirect('/login?validacao=00')
         
     
-def logout(request):            # ok
+def logout(request):
     
     request.session['usuario'] = None
     
-    return render(request, 'usuarios/login.html')
+    return render(request, 'login.html')
     
 
-
-def cadastro(request):      # cadastrar usuário novo (leitor)
+def cadastro(request):      # Cadastro de usuário novo (leitor)
     
     validacao = request.GET.get('validacao')
     
@@ -50,37 +45,38 @@ def cadastro(request):      # cadastrar usuário novo (leitor)
         'validacao': validacao
     }
     
-    return render(request, 'usuarios/cadastro.html', confirme)
+    if validacao == 10:
+        return redirect('index')
+    
+    return render(request, 'cadastro.html', confirme)
 
 
-def validacao_cadastro(request):            # ok    está com uma falha na senha 
+def validacao_cadastro(request):
+    
     nome = request.POST.get('nome')
+    senha = sha256(request.POST.get('senha').encode()).hexdigest()
     email = request.POST.get('email')
     nascimento = request.POST.get('nascimento')
-    senha = request.POST.get('senha')
+    confirmar_senha = sha256(request.POST.get('confirmar_senha').encode()).hexdigest()
     
     usuario = Leitor.objects.filter(email = email)
     
     if len(usuario) > 0:
         return redirect('/cadastro/?validacao=10')
     
-    
-    if len(nome.strip()) == 0 or len(email.strip()) == 0:
+    if confirmar_senha != senha:
         return redirect('/cadastro/?validacao=20')
     
     try:
-        senha = sha256(senha.encode()).hexdigest()
         usuario = Leitor(
             nome = nome ,
+            senha = senha,
             email = email ,
             nascimento = nascimento ,
-            senha = senha
             )
         usuario.save()
-       
-        #return redirect('/cadastro/?validacao=00')     Criar uma mensagem em JavaScrypt com temporizador e logo após fazer o redirecionamento
+    
         return redirect('index')
-        
+            
     except:
         return redirect('/cadastro/?validacao=30')
-

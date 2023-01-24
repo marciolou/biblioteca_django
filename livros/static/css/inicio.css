@@ -1,0 +1,49 @@
+.cta-100 {
+  padding-left: 8%;
+}
+
+figure img {
+  width: 300px;
+}
+
+#blogCarousel {
+  padding-bottom: 100px;
+}
+
+.item-box-blog {
+  border: 1px solid #dadada;
+  text-align: center;
+  z-index: 4;
+  padding: 20px;
+}
+
+.item-box-blog-image {
+  position: relative;
+}
+
+.item-box-blog-image figure img {
+  width: 100%;
+  height: auto;
+}
+
+.item-box-blog-body {
+  padding: 5px;
+}
+
+.item-heading-blog a h5 {
+  margin: 0;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.item-box-blog-heading a {
+  text-decoration: none;
+}
+
+.item-box-blog-text {
+  max-height: 200px;
+  overflow: hidden;
+}
+
+
