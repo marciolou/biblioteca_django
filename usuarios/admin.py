@@ -3,7 +3,6 @@ from . import models
 from usuarios.models import Leitor
 
 
-
 @admin.register(Leitor)
 class LeitorAdmin(admin.ModelAdmin):
     readonly_fields = ('nome', 'email', 'nascimento', 'senha')

@@ -76,7 +76,7 @@ def validacao_cadastro(request):
             )
         usuario.save()
     
-        return redirect('index')
+        return redirect('login')
             
     except:
         return redirect('/cadastro/?validacao=30')

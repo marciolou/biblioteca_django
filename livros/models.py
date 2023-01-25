@@ -8,10 +8,9 @@ class Livro(models.Model):
     titulo = models.CharField(max_length=150)
     autor = models.CharField(max_length=150)
     editora = models.CharField(max_length=150)        
-    conteudo = models.TextField()
-    publicacao = models.DateTimeField()
-    data_cadastro = models.DateTimeField(default=datetime.now())
-    capa = RichTextUploadingField()
+    previa = RichTextUploadingField()
+    capa = models.FileField(upload_to='capa/')
+    arquivo = models.FileField(upload_to='pdf/')
     
     def __str__(self):
         return f'{self.titulo.title()}'
