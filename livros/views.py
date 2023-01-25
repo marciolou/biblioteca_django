@@ -1,6 +1,49 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from . models import Livro
+from django.shortcuts import redirect       # método de redirecionamento
+from usuarios.models import Leitor
+
 
 # Create your views here.
 def index(request):
-    return render(request, 'livros/index.html')
+      
+    livros = Livro.objects.all()
+    
+    if request.session['usuario'] :
+        
+        objeto = {
+        'livros': livros,
+        'leitor': Leitor.objects.get(pk = request.session['usuario'])
+        }
+    
+        return render(request, 'index.html', objeto)
+    
+    else:
+        
+        objeto = {
+        'livros': livros,
+        }
+    
+        return render(request, 'index.html', objeto)
+
+    
+def conteudo(request):
+    
+    if request.session.get('usuario'):
+                
+        livros = Livro.objects.all()
+    
+        objeto = {
+        'livros': livros,
+        'leitor': Leitor.objects.get(pk = request.session['usuario'])
+    }
+        
+        return render(request, 'index.html', objeto)
+    
+    else:
+        return redirect('/login')
+
+
+    
+    
+    
