@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block conteudo %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<div class="w3-container" id="where" style="padding-bottom:32px;">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Livros do nosso Catálogo!</span></h5>
+  </div>
+</div>
+
+<div class="container cta-100 ">
+  <div class="container">
+      
+      <div class="row blog">
+          <div class="col">
+              <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
+                  <!-- Carousel items -->
+                  <div class="carousel-inner">
+                      <div class="carousel-item active">
+
+                        <div class="row">
+                            {% for livro in livros %}
+                            <div class="col-md-3">
+                                <div class="item-box-blog">
+                                    <div class="item-box-blog-image">
+
+                                        {% if leitor %}
+                                        <figure> <a href="images/{{ livro.arquivo }}" target="_blank"><img src="images/{{ livro.capa }}"></a>
+                                        </figure>
+                                    </div>
+                                    <div class="item-box-blog-body">
+                                        <!--Heading-->
+                                        <div class="item-box-blog-heading">
+                                            <a href="images/{{ livro.arquivo }}" target="_blank" tabindex="0">
+                                                <h5>{{ livro|safe }}</h5>
+                                            </a>
+                                        </div>
+                                        {% endif %}
+
+                                        {%if  leitor.id == None %}
+                                        <figure> <a href="{% url 'login' %}""><img src="images/{{ livro.capa }}"></a>
+                                        </figure>
+                                    </div>
+                                    <div class="item-box-blog-body">
+                                        <!--Heading-->
+                                        <div class="item-box-blog-heading">
+                                            <a href="{% url 'login' %}" tabindex="0">
+                                                <h5>{{ livro|safe }}</h5>
+                                            </a>
+                                        </div>
+                                        {% endif %}
+                                        
+                                        <div class="item-box-blog-text">
+                                            <p>{{ livro.previa|safe }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    <!--.aqui-->
+                            {% endfor %}
+                        </div>
+                          <!--.item-->
+                      </div>
+                      <!--.carousel-inner-->
+                  </div>
+                  <!--.Carousel-->
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+{% endblock %}
