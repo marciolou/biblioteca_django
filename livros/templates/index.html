@@ -16,7 +16,6 @@
 <div class="w3-container" id="where" style="padding-bottom:32px;">
   <div class="w3-content" style="max-width:700px">
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Livros do nosso Catálogo!</span></h5>
-    <!-- COLOCAR AQUI A PARTE DE JS QUE PUXA O QUE FOI ADICIONADO -->
   </div>
 </div>
 
@@ -32,65 +31,46 @@
 
 
 
-                        {% if leitor %}
+                        
                         <div class="row">
                             {% for livro in livros %}
                             <div class="col-md-3">
                                 <div class="item-box-blog">
                                     <div class="item-box-blog-image">
-                                        <!--Image-->
-                                        <figure> <a href="https://drive.google.com/file/d/1hxmAy6VkpVnqpw9f0fBEoD8MSAKRf8l0/view?usp=sharing" target="_blank">{{ livro.capa|safe }}</a>
-                                            <!-- |safe: Diz ao Django que todo o conteúdo que estiver aqui dentro, deve ser interpretado como HTML.  -->
-                                            <!-- INSEIRR O LINK DO DRIVE QUE PODERÁ ESTA NO BANCO Ex: {{ livro.driver }} -->
+
+                                        {% if leitor %}
+                                        <figure> <a href="images/{{ livro.arquivo }}" target="_blank"><img src="images/{{ livro.capa }}"></a>
                                         </figure>
                                     </div>
                                     <div class="item-box-blog-body">
                                         <!--Heading-->
                                         <div class="item-box-blog-heading">
-                                            <a href="#" tabindex="0">
-                                                <h5>{{ livro }}</h5>
+                                            <a href="images/{{ livro.arquivo }}" target="_blank" tabindex="0">
+                                                <h5>{{ livro|safe }}</h5>
                                             </a>
                                         </div>
+                                        {% endif %}
+
+                                        {%if  leitor.id == None %}
+                                        <figure> <a href="{% url 'login' %}""><img src="images/{{ livro.capa }}"></a>
+                                        </figure>
+                                    </div>
+                                    <div class="item-box-blog-body">
+                                        <!--Heading-->
+                                        <div class="item-box-blog-heading">
+                                            <a href="{% url 'login' %}" tabindex="0">
+                                                <h5>{{ livro|safe }}</h5>
+                                            </a>
+                                        </div>
+                                        {% endif %}
                                         <div class="item-box-blog-text">
-                                            <p>{{ livro.conteudo }}</p>
+                                            <p>{{ livro.previa|safe }}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>    <!--.aqui-->
                             {% endfor %}
                         </div>
-                        {% endif %}
-
-
-
-                        {%if  leitor.id == None %}
-                        <div class="row">
-                            {% for livro in livros %}
-                            <div class="col-md-3">
-                                <div class="item-box-blog">
-                                    <div class="item-box-blog-image">
-                                        <!--Image-->
-                                        <figure> <a href="{% url 'login' %}">{{ livro.capa|safe }}</a>
-                                            <!-- |safe: Diz ao Django que todo o conteúdo que estiver aqui dentro, deve ser interpretado como HTML.  -->
-                                        </figure>
-                                    </div>
-                                    <div class="item-box-blog-body">
-                                        <!--Heading-->
-                                        <div class="item-box-blog-heading">
-                                            <a href="#" tabindex="0">
-                                                <h5>{{ livro }}</h5>
-                                            </a>
-                                        </div>
-                                        <div class="item-box-blog-text">
-                                            <p>{{ livro.conteudo }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>    <!--.aqui-->
-                            {% endfor %}
-                        </div>
-                        {% endif %}
-
                           <!--.item-->
                       </div>
                       <!--.carousel-inner-->
@@ -99,7 +79,6 @@
               </div>
           </div>
       </div>
-      
   </div>
 </div>
 

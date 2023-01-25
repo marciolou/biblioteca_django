@@ -62,6 +62,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'biblioteca.wsgi.application'
 
+
+# Database
+# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -73,6 +77,8 @@ DATABASES = {
     }
 }
 
+# Password validation
+# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -90,6 +96,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Internationalization
+# https://docs.djangoproject.com/en/4.1/topics/i18n/
+
 LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo'
@@ -99,10 +108,14 @@ USE_I18N = True
 USE_TZ = True
 
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.1/howto/static-files/
+
 STATIC_URL = 'static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')    # Estamos dizendo que o caminho absoluto para onde nossas Imagens, CSS e JavaScript serão armazenados é no diretório BASE_DIR / static Files (STATIC_ROOT)
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# Estamos dizendo que o caminho absoluto para onde nossas Imagens, 
+# CSS e JavaScript serão armazenados é no diretório BASE_DIR / static Files (STATIC_ROOT)
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
@@ -110,5 +123,7 @@ MEDIA_URL = 'images/'           # Da um caminho relativo para onde ficam os arqu
 MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL)        # Informar o caminho absoluto de onde encontram as imagens que chegam em nossa aplicação por meio de um upload.
 
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
