@@ -26,24 +26,6 @@ def index(request):
     
         return render(request, 'index.html', objeto)
 
-    
-def conteudo(request):
-    
-    if request.session.get('usuario'):
-                
-        livros = Livro.objects.all()
-    
-        objeto = {
-        'livros': livros,
-        'leitor': Leitor.objects.get(pk = request.session['usuario'])
-    }
-        
-        return render(request, 'index.html', objeto)
-    
-    else:
-        return redirect('/login')
 
-
-    
     
     
