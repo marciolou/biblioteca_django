@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Status-Em%20Desenvolvimento-brightgreen" alt="Badge Em Desenvolvimento"/>
+    <img src="https://img.shields.io/badge/Status-Finalizado-brightgreen" alt="Badge Finalizado"/>
     <img src="https://img.shields.io/badge/Licen%C3%A7a-MIT-brightgreen" alt="Badge Licença MIT"/>
     <img src="https://img.shields.io/badge/Vers%C3%A3o%20Final-Janeiro%2F23-blue" alt="Badge Versão Final"/>
 </p>
